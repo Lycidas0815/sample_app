@@ -1,6 +1,8 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+require 'active_support/core_ext'
+
 guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
@@ -11,6 +13,7 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('spec/spec_helper.rb')
   watch('test/test_helper.rb')
   watch('spec/support/')
+  watch('config/routes.rb')
 end
 
 guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
@@ -29,7 +32,7 @@ guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
      "spec/requests/#{m[1].singularize}_pages_spec.rb")] 
   end
   watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
-  watch('config/routes.rb')                           { "spec/routing" }
+  watch('config/routes.rb')                           { "spec" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
   watch(%r{^app/views/(.+)/}) do |m|
     (m[1][/_pages/] ? "spec/requests/#{m[1]}_spec.rb" : 
