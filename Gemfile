@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem 'pg', '0.12.2'
+group :production do
+  gem 'pg'
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,7 +11,11 @@ gem 'pg', '0.12.2'
 group :development, :test do
   gem 'sqlite3'
   gem 'therubyracer', :require => 'v8'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.11.0'
+  gem 'guard-rspec', '1.2.1'
+  gem 'guard-spork', '1.4.2'
+  gem 'childprocess'
+  gem 'spork', '0.9.2'
 end
 
 # Gems used only for assets and not required
@@ -28,6 +34,8 @@ gem 'jquery-rails'
 
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'rb-inotify', '~> 0.9'
+  gem 'libnotify', '0.5.9'
 end
 
 
