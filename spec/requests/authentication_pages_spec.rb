@@ -83,6 +83,11 @@ describe "AuthenticationPages" do
             it { should have_selector('title', text: 'Sign in') }
           end
 
+          describe "visiting a specific user profile page" do
+            before { visit user_path(user) }
+            it { should have_selector('title', text: 'Sign in') }
+          end
+
       	end
 
         describe "in the Microposts controller" do

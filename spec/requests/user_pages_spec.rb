@@ -151,6 +151,7 @@ describe "UserPages" do
       let!(:m2) {FactoryGirl.create(:micropost, user: user, content: "Bar")}
 
       before do
+        valid_signin(user)
         visit user_path(user)
       end
 
