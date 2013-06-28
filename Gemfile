@@ -23,6 +23,7 @@ group :development, :test do
   gem 'guard-spork', '1.4.2'
   gem 'childprocess'
   gem 'spork', '0.9.2'
+  gem 'fuubar'
 end
 
 group :development do
